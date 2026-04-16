@@ -134,7 +134,8 @@ async def media_streamer(request: web.Request, id: int, secure_hash: str):
         )
 
     # Setup stream vars
-    chunk_size = 1024 * 1024
+    # chunk_size = 1024 * 1024
+    chunk_size = 1024 * 1024 * 8   # 8MB minimum
     offset = from_bytes - (from_bytes % chunk_size)
     first_part_cut = from_bytes - offset
     last_part_cut = until_bytes % chunk_size + 1
